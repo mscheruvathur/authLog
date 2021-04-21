@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Responsive Login Form | Signup Form | Login Form Design | HTML5 | CSS3 | Code4Education</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+</head>
+<body >
+<main class="main" style="background: url('{% static 'images/22.jpeg' %}') no-repeat center center fixed; background-size:cover">
+    <div class="wrapper" >
+        <div class="card">
+            <div class="title">
+                <h1 class="title title-large">Sign Up</h1>
+                <p class="title title-subs">Already Have a Account <span><a href="{% url 'login' %}" class="linktext">Login</a></span></p>
+                <span class='error-message' id='name-error'>
+                <span class='error-message' id='email-error'>
+                {% for message in messages %}
+              <div style="color: #FF4B2B;">
+                <span>{{message}}</span>
+              </div>
+            {% endfor %}
+            </div>
+            <form class="form" method="post" id="login_form" name="login_form">
+            {% csrf_token %}
+                <div class="form-group">
+                    <input type="username" name="username" id="username" class="input-field" placeholder="User Name" onkeyup='validateName()'>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" id="email" class="input-field" placeholder="Email address" onkeyup='validateEmail()'>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password1" id="password" class="input-field" placeholder="Password" onkeyup='validatePassword()'>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password2" id="password" class="input-field" placeholder="Password" onkeyup='validatePassword()'>
+                </div>
+                <div class="form-group">
+                    <a href="./index.html" class="linktext">Forgot Password</a>
+                    <!--<input type="button" name="submit" class="input-submit" value="Signup">-->
+                    <button onclick='validateForm()'>Signup</button>
+                </div>
+            </form>
+            <div class="line">
+                <span class="line-bar"></span>
+                <span class="line-bar"></span>
+                <span class="line-bar"></span>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+	document.loginf_form.addEventListener("submit", function (event) {
+		var user = this.querySelector("input[id=email]").value;
+		var pass = this.querySelector("input[id=password]").value;
+		var regx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+		if (user.trim() == "" || !user.match(regx)) {
+		document.getElementById("email").focus();
+		event.preventDefault();
+		}
+		else if (pass.trim() == "" || pass.length < 8 ) {
+		document.getElementById("password").focus();
+		event.preventDefault();
+		}
+		});
+
+    function validateName() {
+
+      var name = document.getElementById('username').value;
+
+      if(name.length == 0) {
+
+        producePrompt('Enter your name', 'name-error' , 'red')
+        return false;
+
+      }
+
+      if (!name.match(/^[A-Za-z]*$/)) {
+
+        producePrompt('Enter a valid user name.','name-error', 'red');
+        return false;
+
+      }
+
+      producePrompt('valid username', 'name-error', 'green');
+      return true;
+
+    }
+	function validateEmail () {
+
+		var email = document.getElementById('email').value;
+
+		if(email.length == 0) {
+
+		producePrompt('Enter your Email','email-error', 'red');
+		return false;
+
+		}
+
+		if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+
+		producePrompt('Enter a Valid email', 'email-error', 'red');
+		return false;
+
+		}
+
+		producePrompt('Valid Email', 'email-error', 'green');
+		return true;
+
+	}
+
+	
+	function validatePassword() {
+
+		var name = document.getElementById('password').value;
+
+		if(name.length == 0) {
+
+		producePrompt('Enter you password', 'name-error' , 'red')
+		return false;
+
+		}
+		if(name.length >8){
+			producePrompt('Valid Password', 'name-error' , 'green')
+			return false;
+		}
+
+
+		producePrompt('Password must 8', 'name-error', 'red');
+		return true;
+
+	}
+	
+
+
+	function validateForm() {
+		if (!validatePassword() || !validateEmail()) {
+		jsShow('submit-error');
+		producePrompt('Please fix errors to submit.', 'submit-error', '');
+		setTimeout(function(){jsHide('submit-error');}, 2000);
+		}
+		else {
+
+		}
+	}
+
+	function jsShow(id) {
+		ument.getElementById(id).style.display = 'block';
+	}
+
+	function jsHide(id) {
+		document.getElementById(id).style.display = 'none';
+	}
+
+
+
+
+	function producePrompt(message, promptLocation, color) {
+
+		document.getElementById(promptLocation).innerHTML = message;
+		document.getElementById(promptLocation).style.color = color;
+
+
+	}
+
+</script>
+</body>
+</html>
+

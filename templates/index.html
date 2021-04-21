@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Istok+Web&display=swap"
+      rel="stylesheet"
+    />
+    <title>Sam |</title>
+    <link href="{% static 'css/index.css'%} " rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <scrip src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></scrip>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    
+
+    <section class="main_container" style="background: url('{% static 'images/2.jpg' %}') no-repeat center center fixed; background-size:cover">
+      <div class="row home_page" id="home_page">
+        <div id="image_section" class="col-xl-6 col-sm-12 p-4">
+            <!--<img src="{% static 'images/Login.svg'%}" class="img-fluid" />-->
+            <div class="text_items">
+                <h6>There are many variations of passages of Lorem</h6>
+                <h6>mscheruvathur@gmail.com</h6>
+            </div>
+        </div>
+        <div id="text_section" class="col-xl-6 col-sm-12 p-4 ">
+          <div class="center">
+            <h2>Login</h2>
+            <form action="login" method="POST">
+              {% csrf_token %}
+              <div class="text_field">
+                <input type="text" name="username" id="">
+                <label for="">User Name</label>
+              </div>
+              <div class="text_field">
+                <input type="password" name="password" id="">
+                <label for="">password</label>
+              </div>
+              <div class="pass">Forgot Password</div>
+              <input type="submit" value="Login">
+              {% for message in messages %}
+              <div>
+                <h6>{{message}}</h6>
+              </div>
+              {% endfor %}
+              <div class="signup_link">
+                Not a member ?<a href="{% url 'Register' %}">Signup</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+  </body>
+</html>

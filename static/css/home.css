@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after{ margin: 0; padding: 0; box-sizing: border-box;}
+html{ font-family: 'Roboto', sans-serif; font-size: 10px;}
+header{ width: 100%; position: fixed; top: 0; left: 0; transition: background-color .5s ease; z-index: 1000;}
+.container{ width: 100%; max-width: 120rem; margin: 0 auto; padding: 0 1.5rem;}
+.nav{ width: 100%; height: 10rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid rgba(255,255,255,.05); transition: height .5s ease;}
+.nav a{ text-decoration: none; color: #fff; font-size: 1.6rem;}
+.nav .logo{ font-size: 3.5rem; font-weight: bold;}
+.nav-list{ list-style: none; display: flex; justify-content: space-evenly; margin-right: auto; margin-left: 4rem;}
+.nav-link{ margin: 0 2rem; position: relative;}
+.nav-link::after{ content: ''; width: 100%; height: 2px; background-color: #fff; position: absolute; left: 0; bottom: -3px; transform: scaleX(0); transform-origin: left; transition: transform .5s ease;}
+.nav-link:hover::after{ transform: scaleX(1);}
+#nav-cta{ display: inline-block; background-color: #fff; color: #313131; padding: 1rem 2rem; border-radius: 2rem; transition: background-color .5s ease;}
+#nav-cta:hover{ background-color: #d3d3d3;}
+/*Apply styles after scroll*/
+.scrolling-active{ background-color: #fff; box-shadow: 0 3px 1rem rgba(0,0,0,.1);}
+.scrolling-active .nav{ height: 6.6rem;}
+.scrolling-active .nav a{ color: #313131;}
+.scrolling-active #nav-cta{ background-color: #313131; color: #fff;}
+.scrolling-active #nav-cta:hover{ background-color: #151515;}
+.scrolling-active .nav-link::after{ background-color: #313131;}
+/*Apply styles after scroll end*/
+/* Hero Demo Content*/
+.hero{ width: 100%; height: 100vh; background: url("mountain-large.jpg") center no-repeat; background-size: cover; position: relative;}
+.hero::after{ content: ''; width: inherit; height: inherit;  position: absolute; top: 0; left: 0; background-color: rgba(0,0,0,.3);}
+.demo-content{ width: 100%; height: 100vh; background-color: #fff;}
+/* Hero end*/
+/*burger animation*/
+.burger div{ width: 25px; height: 3px; background-color: rgb(226, 226, 226); margin: 5px; transition: all 0.3s ease;}
+.burger { display: none; cursor: pointer;}
+@media screen and (max-width:768px){
+    bodoy{overflow-x: hidden;}
+    #nav-cta{display: none;}
+    .nav-list{
+        position: absolute;
+        right: 0;
+        height: 60vh;width: 100%;
+        top: 9vh;
+        background: blue;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+    .nav-list li{opacity: 0;}
+    .burger{display: block;}
+}
+.nav-active{transform: translateX(0%);}
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.toggle .line-1{transform: rotate(-45deg) translate(-5px,6px);}
+.toggle .line-2{opacity: 0;}
+.toggle .line-3{transform: rotate(45deg) translate(-5px,-6px);}
+.user{
+    color: #fff;
+    font-size: 16px;
+    padding-right: 20px;
+}
+.scrolling-active .user{
+    color: #494646;
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.hero p{
+    font-size: 24px;
+    letter-spacing: 1px;
+    line-height: 38px;
+    color: #ebe8e8;
+    z-index: 1;
+}
+.hero a{
+    background-color: #d3d3d3;
+    z-index: 1;
+    color: #151515;
+    width: 100px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border-radius: 40px;
+    text-decoration: none;
+}
+.hero a:hover{
+    color: #d3d3d3;
+    background-color: #151515;
+}
+.hero p span{
+    font-size: 18px;
+    color: #d3dede;
+}
+
+.demo-content{
+    
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CARD */
+
+

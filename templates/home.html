@@ -1,0 +1,61 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">sam.</a>
+                <ul class="nav-list">
+                    <li>
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">About</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Taxi Services</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Rent Services</a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                    
+                </ul>
+                {% if user.is_authenticated %}
+                <p class="user">Hello,  {{user.username}}</p>
+                <a href="logout" id="nav-cta">Logout</a>
+                {% endif %}
+
+                <div class="burger">
+                    <div class="line-1"></div>
+                    <div class="line-2"></div>
+                    <div class="line-3"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="background: url('{% static 'images/1.jpg' %}') no-repeat center center fixed; background-size:cover" >
+        <p>Drikning alcoohl makse you ingonr the misspelled workd in reading,</p>
+        <p>let alnoe the misspoeration while driving.</p>
+        <p><span>Don't drink and drive</span></p>
+        <br>
+        <a href="#">Learn More..</a>
+    </section>
+    <section class="demo-content">
+        
+    </section>
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+</html>
